@@ -5,6 +5,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
 
 def pregunta_04():
     """
@@ -20,3 +21,13 @@ def pregunta_04():
     E    4.785714
     Name: c2, dtype: float64
     """
+
+
+
+    # Leer el archivo TSV
+    df = pd.read_csv('files/input/tbl0.tsv', sep='\t')
+
+    # Calcular el promedio de 'c2' por cada letra en 'c1'
+    promedio_por_letra = df.groupby('c1')['c2'].mean().sort_index()
+
+    return promedio_por_letra
